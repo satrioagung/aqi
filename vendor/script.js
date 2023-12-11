@@ -104,12 +104,14 @@
 
     searchBtn.addEventListener("click", async () => { 
         document.querySelector(".hasil-prediksi").style.display = "none";
+        document.querySelector("#prediksi").style.display = "block";
         await getLatCity();
         ceckAqi(apiAqi, latitud, longitud);
     })
     
     prediksiBtn.addEventListener("click", async () => { 
         document.querySelector(".hasil-prediksi").style.display = "block";
+        document.querySelector("#prediksi").style.display = "none";
         ceckAqi(apiForecast, latitud, longitud, 24); 
     })
     
