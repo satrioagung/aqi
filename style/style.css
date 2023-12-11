@@ -116,10 +116,30 @@ tbody tr:last-child td:last-child {
     margin: 4px 2px; /* Margin di sekitar tombol */
     cursor: pointer; /* Mengubah kursor menjadi pointer ketika mouse di atas tombol */
     border: none; /* Menghilangkan border */
-    border-radius: 8px; /* Membuat tepi tombol bulat */
+    border-radius: 15px; /* Membuat tepi tombol bulat */
 }
 
 #prediksiButton:hover {
+    background-color: #02FAB9; /* Warna latar belakang tombol saat di-hover */
+    color: black;
+}
+
+#lokasi {
+    display: block;
+    background-color: #565A8C; /* Warna latar belakang tombol */
+    color: white; /* Warna teks */
+    padding: 15px 15px; /* Padding di dalam tombol */
+    text-align: center; /* Penyelarasan teks */
+    text-decoration: none; /* Menghilangkan garis bawah teks */
+    display: inline-block; /* Membuat tombol inline */
+    font-size: 16px; /* Ukuran font teks */
+    margin: 15px 2px; /* Margin di sekitar tombol */
+    cursor: pointer; /* Mengubah kursor menjadi pointer ketika mouse di atas tombol */
+    border: none; /* Menghilangkan border */
+    border-radius: 15px; /* Membuat tepi tombol bulat */
+}
+
+#lokasi:hover {
     background-color: #02FAB9; /* Warna latar belakang tombol saat di-hover */
     color: black;
 }

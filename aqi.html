@@ -14,6 +14,7 @@
             <input type="text" placeholder="enter city name" spellcheck="false">
             <button><img src="images/search.png"></button>
         </div>
+        <button id="lokasi">Gunakan Lokasi Saat Ini</button>
         <div class="error">
             <p>Invalid city name</p>
         </div>
@@ -47,73 +48,17 @@
                             <td id="o3">10</td>
                             <td id="co">10</td>
                         </tr>
-                        <!-- Anda bisa menambahkan lebih banyak baris data di sini -->
                     </tbody>
                 </table>
             </div>
 
             <div class="details">
-                <button id="prediksiButton">Prediksi</button>
+                <button id="prediksiButton">Tampilkan Prediksi</button>
             </div>
         </div>
     </div>
 </body>
 
-<script>
-    const apiKey = "4f2a6d6244349d83794a4c7d94386573";
-    const apiAqi = "https://api.openweathermap.org/data/2.5/air_pollution?";
-    const apiCity = "https://api.openweathermap.org/geo/1.0/direct?q="
-
-    const searchBox = document.querySelector(".search input");
-    const searchBtn = document.querySelector(".search button");
-    const weatherIcon = document.querySelector(".weather-icon")
-
-    async function ceckAqi(city) {
-        const getCity = await fetch(apiCity + city + `&appid=${apiKey}`)
-        var dataCity = await getCity.json()
-
-
-        const lat = "lat=" + dataCity[0].lat
-        const lon = "&lon=" + dataCity[0].lon
-
-        const aqi = await fetch(apiAqi + lat + lon + `&appid=${apiKey}`);
-        var data = await aqi.json();
-
-        // console.log(getCity.status);
-
-        document.querySelector("#aqi").innerHTML = data.list[0].main.aqi;
-        document.querySelector(".city").innerHTML = dataCity[0].name;
-        document.querySelector("#so2").innerHTML = data.list[0].components.so2;
-        document.querySelector("#no2").innerHTML = data.list[0].components.no2;
-        document.querySelector("#pm10").innerHTML = data.list[0].components.pm10;
-        document.querySelector("#pm2_5").innerHTML = data.list[0].components.pm2_5;
-        document.querySelector("#o3").innerHTML = data.list[0].components.o3;
-        document.querySelector("#co").innerHTML = data.list[0].components.co;
-
-
-        if (data.list[0].main.aqi == 1) {
-            weatherIcon.src = "images/good.png";
-        } else if (data.list[0].main.aqi == 2) {
-            weatherIcon.src = "images/moderate.png";
-        } else if (data.list[0].main.aqi == 3) {
-            weatherIcon.src = "images/unhealthy1.png";
-        } else if (data.list[0].main.aqi == 4) {
-            weatherIcon.src = "images/unhealthy.png";
-        } else if (data.list[0].main.aqi == 5) {
-            weatherIcon.src = "images/very-unhealty.png";
-        }
-
-        document.querySelector(".weather").style.display = "block";
-
-        // if (!dataCity) {
-        //     document.querySelector(".error").style.display = "block";
-        //     document.querySelector(".weather").style.display = "none";
-        // } else {
-        //     document.querySelector(".error").style.display = "none";
-        // }
-    }
-
-    searchBtn.addEventListener("click", () => { ceckAqi(searchBox.value); })
-</script>
+<script src="./vendor/script.js"></script>
 
 </html>
