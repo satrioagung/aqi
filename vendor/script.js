@@ -23,13 +23,21 @@
         city = dataCity[0].name
     }
 
+    // mengambil nama kota dari lat dan lon device
+    async function getNameCity(lat, lon){
+        const getCityName = await fetch(`${apiCityName}lat=${lat}&lon=${lon}&appid=${apiKey}`)
+        const cityName = await getCityName.json()
+        city = cityName[0].name;
+    }
+
     // mengambil latitud dan longtiud dari lokasi device
-    async function getDeviceLocation() {
+    function getDeviceLocation() {
         if ("geolocation" in navigator) {
             navigator.geolocation.getCurrentPosition(function(position) {
                 latitud = position.coords.latitude;
                 longitud = position.coords.longitude;
-  
+                getNameCity(position.coords.latitude, position.coords.longitude)
+
             }, function(error) {
                 switch(error.code) {
                     case error.PERMISSION_DENIED:
@@ -49,16 +57,8 @@
         } else {
             console.error("Geolocation tidak didukung di peramban ini.");
         }
+
     }
-
-    // async function getNameCity(lat, lon){
-    //     console.log(lat);
-    //     const getCityName = await fetch(`${apiCityName}lat=${lat}&lon=${lon}&appid=4f2a6d6244349d83794a4c7d94386573`)
-    //     const cityName = await getCityName.json()
-    //     city = cityName[0].name;
-
-    // }
-
     
     // cek aqi
     async function ceckAqi(lat, lon) {
@@ -93,17 +93,15 @@
 
 
       
-    lokasi.addEventListener("click", async () => { 
-        await getDeviceLocation();
-        // await getNameCity(latitud, longitud)
+    lokasi.addEventListener("click", () => { 
+        getDeviceLocation();
         ceckAqi(latitud, longitud);
-        // console.log(longitud);
      })
 
     searchBtn.addEventListener("click", async () => { 
         await getLatCity();
         ceckAqi(latitud, longitud);
         console.log(longitud);
-        // console.log(latitud);
+        console.log(latitud);
     })
     
