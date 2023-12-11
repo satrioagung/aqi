@@ -105,7 +105,7 @@ tbody tr:last-child td:last-child {
     border-bottom-right-radius: 10px; /* Lengkung kanan bawah */
 }
 
-#prediksiButton {
+#prediksi {
     background-color: #565A8C; /* Warna latar belakang tombol */
     color: white; /* Warna teks */
     padding: 15px 32px; /* Padding di dalam tombol */
@@ -119,7 +119,7 @@ tbody tr:last-child td:last-child {
     border-radius: 15px; /* Membuat tepi tombol bulat */
 }
 
-#prediksiButton:hover {
+#prediksi:hover {
     background-color: #02FAB9; /* Warna latar belakang tombol saat di-hover */
     color: black;
 }
